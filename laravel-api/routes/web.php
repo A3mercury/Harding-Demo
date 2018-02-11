@@ -15,6 +15,14 @@ Route::get('/tasks')
     ->name('task.index')
     ->uses('TaskController@index');
 
-Route::post('/tasks/items/store')
+Route::get('/task/{task}')
+    ->name('task.show')
+    ->uses('TaskController@show');
+
+Route::post('/task/item/store')
     ->name('tasks.items.store')
     ->uses('TaskItemsController@store');
+
+Route::post('/task/item/complete')
+    ->name('task.items.complete')
+    ->uses('TaskItemsController@complete');

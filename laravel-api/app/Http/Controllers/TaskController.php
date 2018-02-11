@@ -14,4 +14,12 @@ class TaskController extends Controller
             'tasks' => Task::visibleTo(Auth::user())->get(),
         ]);
     }
+
+    public function show(Task $task)
+    {
+        return json_encode([
+            'message' => 'success',
+            'items' => $task->taskItems
+        ]);
+    }
 }
