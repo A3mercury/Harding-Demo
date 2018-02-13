@@ -15,7 +15,10 @@ class TaskItemsController extends Controller
             'label'   => 'required|max:48',
         ]);
 
-        $task_item = TaskItem::create(request());
+        $task_item = TaskItem::create([
+            'task_id' => request('task_id'),
+            'label' => request('label')
+        ]);
 
         return json_encode([
             'message' => 'success',
@@ -28,8 +31,9 @@ class TaskItemsController extends Controller
             'item_id' => 'required|integer|exists:task_items,id',
         ]);
 
-        $task_item = TaskItem::find(request('item_id'))->update([
-            'completed' => Carbon::now(),
+        $task_item = TaskItem::find(request('item_id'));
+        $task_item->update([
+            'completed' => $task_item->completed ? null : Carbon::now(),
         ]);
 
         return json_encode([

@@ -9,6 +9,7 @@ class TaskItem extends Model
     protected $fillable = [
         'task_id',
         'label',
+        'completed'
     ];
 
     public function task()
