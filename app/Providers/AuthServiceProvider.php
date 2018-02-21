@@ -27,8 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Auth::setUser(User::where('email', 'a5mercuryhu@gmail.com')->first());
-//        Auth::setUser(User::where('email', 'bobbert@gmail.com')->first());
+//        Auth::setUser(User::where('email', 'a5mercuryhu@gmail.com')->first());
+//        Auth::setUser(User::where('email', 'bobbert@email.com')->first());
 //        Auth::setUser(User::where('email', 'coach@harding.edu')->first());
     }
 }

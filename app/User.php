@@ -2,18 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'first_name',
         'last_name',
@@ -21,23 +13,14 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
+        'is_super',
     ];
 
     public function tasks()
     {
-        return $this->hasMany(Task::class);
-    }
-
-    public function taskItems()
-    {
-        return $this->hasManyThrough(TaskItem::class, Task::class);
+        return $this->hasMany(Task::class, 'user_id', 'id');
     }
 }
