@@ -23,4 +23,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class, 'user_id', 'id');
     }
+
+    public function isSuper()
+    {
+        return $this->is_super;
+    }
 }
